@@ -10,14 +10,22 @@ app.get('/', (req, res) => {
   });
 
 
+  const users = [];
+
   io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
+    socket.on('new user', ({username, userId}) => {
+        users.push({username, userId});
+        socket.broadcast.emit('joined chat', username);
       });
-    socket.on('chat message', (msg) => {
-        console.log('message: ' + msg);
-        io.emit('chat message', msg);
+
+    socket.on('typing', id => {
+      console.log('TYPING!', id)
+      const user = users.find(user => user.userId === id);
+      socket.broadcast.emit('user typing', `${user.username} is typing...`);
+    })
+
+    socket.on('chat message', (message) => {
+        io.emit('chat', socket.id, message);
     });
   });
 
