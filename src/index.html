@@ -33,22 +33,27 @@
             socket.emit('typing', socket.id)
         }
 
-        input.oninput = sendTypingStatus;
-
-        if (input.value !== '') {
-          console.log('tyiping....')
-          var item = document.createElement('li');
-          item.textContent = `${username} is typing...`;
-          messages.appendChild(item);
-          window.scrollTo(0, document.body.scrollHeight);
+        function debounce_leading(func, timeout = 300){
+          let timer;
+          return (...args) => {
+            if (!timer) {
+              func();
+            }
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+              timer = undefined;
+            }, timeout);
+          };
         }
+
+        input.oninput = debounce_leading(() => sendTypingStatus());
 
 
         form.addEventListener('submit', function(e) {
           e.preventDefault();
           
           if (input.value) {
-            socket.emit('chat message', input.value);
+            socket.emit('chat message', socket.id, input.value);
             input.value = '';
           }
         });
