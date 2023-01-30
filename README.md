@@ -19,3 +19,7 @@
 - [Traditional WebSocket client will not be able to successfully connect to a Socket.IO server](https://socket.io/docs/v4/#what-socketio-is-not)
 - [Socket.IO client will not be able to connect to a plain WebSocket server](https://socket.io/docs/v4/#what-socketio-is-not)
 - [Added bytes as opposed to traditional Websocket (although it is minimal)](https://socket.io/docs/v4/#packet-buffering)
+
+## Questions
+- Communication between LRU and server – how to capture / emit events via socket.io?
+- BE language / config preferences – is it supported by socket.io?
