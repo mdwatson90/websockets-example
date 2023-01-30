@@ -1,15 +1,23 @@
 {
-  "name": "chat-app",
-  "version": "0.0.1",
-  "description": "chat application using socket.io",
-  "main": "src/index.js",
+  "name": "websockets-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "D. Watson",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdwatson90/websockets-example.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdwatson90/websockets-example/issues"
+  },
+  "homepage": "https://github.com/mdwatson90/websockets-example#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.3.2"
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
   }
 }
